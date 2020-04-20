@@ -1,28 +1,23 @@
 # twitch drop extension
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Extensão para pegar o drop do VALORANT.
 
-## Install
+1. Quando o usuário navegar para a página inicial da twitch;
+2. Procura uma nova live na lista do VALORANT;
+3. Entra na live e fica verificando se a live está AO VIVO;
+4. Caso fique OFFLINE ou mude de jogo procurar uma nova live.
 
-	$ npm install
+## Opera
 
-## Development
+Recomendo o Opera pela opção nativa de VPN.
 
-    npm run dev chrome
-    npm run dev firefox
-    npm run dev opera
-    npm run dev edge
-
-## Build
-
-    npm run build chrome
-    npm run build firefox
-    npm run build opera
-    npm run build edge
-
-## Environment
-
-The build tool also defines a variable named `process.env.NODE_ENV` in your scripts. 
+1. Projeto
+    - npm run build opera
+2. Menu bar:
+    - Extensions
+    - Ative o modo Developer mode
+    - Clique no botão Load unpacked
+    - Escolha a pasta dist/opera
 
 ## Docs
 
