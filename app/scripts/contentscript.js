@@ -1,6 +1,7 @@
 (function() {
 
     const urlValorant = 'https://www.twitch.tv/directory/game/VALORANT';
+    let searching;
 
     function isChannel() {
         return document.querySelector('[data-a-target="video-player"] .tw-pd-l-1') ? true : false;
@@ -31,21 +32,35 @@
     function isTwitch() {
         return window.location.hostname === "www.twitch.tv";
     }
-    
-    if (isTwitch()) {
-        setInterval(function() {
-            if (isChannel()) {
-                if (!checkIfStreamOnline() || !valorant()) {
-                    console.log('Is not valorant or not online');
-                    goStreamValorant();
-                } else {
-                    console.log('Is valorant');
-                }
-            } else if (isValorantList()) {
-                goToFirstChannel();
+
+    function searchingTwitch() {
+        if (isChannel()) {
+            if (!checkIfStreamOnline() || !valorant()) {
+                console.log('Is not valorant or not online');
+                goStreamValorant();
+            } else {
+                console.log('Is valorant');
             }
-        }, 10000);
+        } else if (isValorantList()) {
+            goToFirstChannel();
+        }
     }
+    console.log("[twitch-drop] > Init");
+    chrome.runtime.sendMessage({init: true});
+
+    chrome.runtime.onMessage.addListener(function(request, sender) {
+        if (request.searching) {
+            console.log("[twitch-drop] > searching...");
+            if (isTwitch()) {
+                searching = setInterval(function() {
+                    searchingTwitch();
+                }, 10000);
+            }
+        } else if (searching) {
+            console.log("[twitch-drop] > stop searching");
+            clearInterval(searching);
+        }
+    });
     
 })();
 
