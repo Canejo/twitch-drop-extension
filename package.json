@@ -1,7 +1,8 @@
 {
   "name": "twitch-drop-extension",
   "version": "0.0.1",
-  "description": "",
+  "license": "MIT",
+  "description": "Extensão para pegar o drop do VALORANT",
   "scripts": {
     "dev": "webextension-toolbox dev",
     "build": "webextension-toolbox build"
