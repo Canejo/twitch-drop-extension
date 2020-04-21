@@ -6,11 +6,20 @@ browser.tabs.onUpdated.addListener(async (tabId) => {
   browser.pageAction.show(tabId)
 })
 
-chrome.runtime.onMessage.addListener(async (request) => {
-  const active = await extensionActive();
-  if (active === true && request.init) {
-    sendMessageTab({searching: true});
+chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
+  let active = await extensionActive();
+  if (request.changeState) {
+    setValue({state: request.state });
+    active = request.state;
   }
+  sendMessageTab({searching: active});
+});
+
+chrome.extension.onRequest.addListener(async (request, sender, sendResponse) => {
+  let active = await extensionActive();
+  if (request.get) {
+    sendResponse({state: active});
+  } 
 });
 
 
@@ -20,18 +29,18 @@ function sendMessageTab(message) {
   });
 }
 
-function setValue(value) {
-  chrome.storage.local.set(value);
+function setValue(value) {  
+    chrome.storage.local.set(value);
 }
 
 function getValue(name) {
   return new Promise((resolve, reject) => {
     chrome.storage.local.get([name], function(result) {
-      resolve(result);
+      resolve(result[name]);
     });
   });
 }
 
 function extensionActive() {
-  return getValue('active');
+  return getValue('state');
 }

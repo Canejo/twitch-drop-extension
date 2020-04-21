@@ -4,10 +4,31 @@
   <meta charset="utf-8" />
   <title>Popup</title>
   <link rel="stylesheet" type="text/css" href="../styles/popup.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-<body>
-
-  <h1>Popup</h1>
+<body class="text-white bg-dark">
+  <div class="row">
+    <div class="col">
+      <img src="../images/valorant.jpg" class="img-fluid" alt="Responsive image" />
+    </div>
+  </div>
+  
+  <div class="container my-3">
+    <div class="row">
+      <div class="col">
+        <h1>Drop VALORANT</h1>
+        <ol>
+          <li>Procura uma nova live na lista do VALORANT</li>
+          <li>Entra na live e fica verificando se a live está <span class="badge badge-danger">AO VIVO</span></li>
+          <li>Caso fique <span class="badge badge-secondary">OFFLINE</span>  ou mude de jogo procurar uma nova live</li>
+        </ol>
+        <div class="custom-control custom-switch text-center">
+          <input type="checkbox" class="custom-control-input" id="chkAtivar">
+          <label class="custom-control-label" for="chkAtivar">Ativar</label>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="../scripts/popup.js"></script>
 </body>
