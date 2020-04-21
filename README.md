@@ -3,7 +3,7 @@
 Extensão para pegar o drop do VALORANT.
 
 <p align="center">
-  <img alt="Tela inicial da extensão" src="https://i.imgur.com/TA9zEZ6">
+  <img alt="Tela inicial da extensão" src="https://i.imgur.com/TA9zEZ6.png">
 </p>
 
 ## Opera
