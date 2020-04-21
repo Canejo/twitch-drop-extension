@@ -2,10 +2,9 @@
 
 Extensão para pegar o drop do VALORANT.
 
-1. Quando o usuário navegar para a página inicial da twitch;
-2. Procura uma nova live na lista do VALORANT;
-3. Entra na live e fica verificando se a live está AO VIVO;
-4. Caso fique OFFLINE ou mude de jogo procurar uma nova live.
+<p align="center">
+  <img alt="Tela inicial da extensão" src="https://imgur.com/TA9zEZ6">
+</p>
 
 ## Opera
 
