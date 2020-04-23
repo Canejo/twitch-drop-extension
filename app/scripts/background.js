@@ -7,12 +7,16 @@ browser.tabs.onUpdated.addListener(async (tabId) => {
 })
 
 chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
-  let active = await extensionActive();
-  if (request.changeState) {
-    setValue({state: request.state });
-    active = request.state;
+  if (request.refresh) {
+    chrome.tabs.reload(sender.tab.id);
+  } else {
+    let active = await extensionActive();
+    if (request.changeState) {
+      setValue({state: request.state });
+      active = request.state;
+    }
+    sendMessageTab({searching: active});
   }
-  sendMessageTab({searching: active});
 });
 
 chrome.extension.onRequest.addListener(async (request, sender, sendResponse) => {

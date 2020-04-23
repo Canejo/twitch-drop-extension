@@ -33,13 +33,22 @@
         return window.location.hostname === "www.twitch.tv";
     }
 
+    function checkIfError() {
+        const player = document.querySelector('.content-overlay-gate__content');
+        return player && player.innerHTML.indexOf('Error') > -1;
+    }
+
     function searchingTwitch() {
         if (isChannel()) {
-            if (!checkIfStreamOnline() || !valorant()) {
-                console.log('Is not valorant or not online');
-                goStreamValorant();
+            if (checkIfError()) {
+                chrome.runtime.sendMessage({refresh: true});
             } else {
-                console.log('Is valorant');
+                if (!checkIfStreamOnline() || !valorant()) {
+                    console.log('Is not valorant or not online');
+                    goStreamValorant();
+                } else {
+                    console.log('Is valorant');
+                }
             }
         } else if (isValorantList()) {
             goToFirstChannel();
