@@ -35,7 +35,7 @@
 
     function checkIfError() {
         const player = document.querySelector('.content-overlay-gate__content');
-        return player && player.innerHTML.indexOf('Error') > -1;
+        return player && player.innerHTML.indexOf('Erro') > -1;
     }
 
     function searchingTwitch() {
